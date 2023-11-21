@@ -264,10 +264,10 @@ watch(source_glider, (newvalue) => recalculate())
 	<div>
 		<v-radio-group @change="recalculate()" v-model="mode">
 			<v-radio label="Closest build" value="Closest" color="primary"></v-radio>
-			<v-radio label="Optimized build" value="Optimized" color="primary"></v-radio>
+			<v-radio label='Optimized build (coming "soon")' value="Optimized" color="primary" disabled></v-radio>
 		</v-radio-group>
 	</div>
-	<div v-if="mode == 'Closest'">
+	<div v-if="mode == ' Closest'">
 		<h2>Source build</h2>
 		<v-select label="Character" v-model="source_character" :items=CHARACTER_LIST
 			style="display: inline-block; width: 25%; overflow: hidden; text-overflow: ellipsis;"></v-select>
@@ -323,7 +323,7 @@ watch(source_glider, (newvalue) => recalculate())
 		</v-expansion-panels>
 	</div>
 	<div>
-		<v-text-field @change="recalculate()" v-model="num_of_builds" type="number" label="Number of builds to generate"
+		<v-text-field @change="recalculate()" v-model="num_of_builds" type="number" label="Number of builds to show"
 			style="width:300px"></v-text-field>
 	</div>
 	<div>
@@ -338,7 +338,7 @@ watch(source_glider, (newvalue) => recalculate())
 			</v-card>
 		</div>
 		<br>
-		<h2>Generated Builds</h2>
+		<h2>{{ (mode == "Closest") ? "Closest Builds" : "Optimized Builds" }}</h2>
 		<div v-for="(build, index) in builds">
 			<v-card v-if="build_selected == index + 1">
 				<v-card-text>
