@@ -267,7 +267,7 @@ watch(source_glider, (newvalue) => recalculate())
 			<v-radio label='Optimized build (coming "soon")' value="Optimized" color="primary" disabled></v-radio>
 		</v-radio-group>
 	</div>
-	<div v-if="mode == ' Closest'">
+	<div v-if="mode == 'Closest'">
 		<h2>Source build</h2>
 		<v-select label="Character" v-model="source_character" :items=CHARACTER_LIST
 			style="display: inline-block; width: 25%; overflow: hidden; text-overflow: ellipsis;"></v-select>
