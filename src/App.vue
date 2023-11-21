@@ -21,7 +21,7 @@ const CHARACTER_LIST = [
 	"(Koopa Troopa, Lakitu, Bowser Jr.)",
 	"(Toad, Shy Guy, Larry)",
 	"(Cat Peach, Inkling Girl, Female Villager, Diddy Kong)",
-	"(Peach, Daisy, Yoshi, Peachette)",
+	"(Peach, Daisy, Yoshi, Birdo, Peachette)",
 	"(Tanooki Mario, Inkling Boy, Male Villager)",
 	"(Mario, Ludwig, Medium Mii)",
 	"(Luigi, Iggy, Kamek)",
