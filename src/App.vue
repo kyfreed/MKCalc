@@ -261,25 +261,25 @@ watch(source_glider, (newvalue) => recalculate())
 
 
 <template>
-	<div>
-		<v-radio-group @change="recalculate()" v-model="mode">
-			<v-radio label="Closest build" value="Closest" color="primary"></v-radio>
-			<v-radio label='Optimized build (coming "soon")' value="Optimized" color="primary" disabled></v-radio>
-		</v-radio-group>
-	</div>
 	<div v-if="mode == 'Closest'">
 		<h2>Source build</h2>
 		<v-select label="Character" v-model="source_character" :items=CHARACTER_LIST
-			style="display: inline-block; width: 25%; overflow: hidden; text-overflow: ellipsis;"></v-select>
+			style="display: inline-block; width: 25%; overflow: hidden; word-break: break-word;"></v-select>
 		<v-select label="Vehicle" v-model="source_vehicle" :items=VEHICLE_LIST
-			style="display: inline-block; width: 25%; overflow: hidden; text-overflow: ellipsis;"></v-select>
+			style="display: inline-block; width: 25%; overflow: hidden; word-break: break-word;"></v-select>
 		<v-select label="Wheels" v-model="source_wheels" :items=WHEEL_LIST
-			style="display: inline-block; width: 25%; overflow: hidden; text-overflow: ellipsis;"></v-select>
+			style="display: inline-block; width: 25%; overflow: hidden; word-break: break-word;"></v-select>
 		<v-select label="Glider" v-model="source_glider" :items=GLIDER_LIST
-			style="display: inline-block; width: 25%; overflow: hidden; text-overflow: ellipsis;"></v-select>
-		<h2>Stats to consider</h2>
-		<v-checkbox v-for="(stat, index) in STAT_NAMES" v-model="stats_to_consider[index]"
-			@change="update_stats_to_consider(index)" :label=stat color="primary"></v-checkbox>
+			style="display: inline-block; width: 25%; overflow: hidden; word-break: break-word;"></v-select>
+		<v-expansion-panels>
+			<v-expansion-panel>
+				<v-expansion-panel-title>Stats to consider</v-expansion-panel-title>
+				<v-expansion-panel-text>
+					<v-checkbox v-for="(stat, index) in STAT_NAMES" v-model="stats_to_consider[index]"
+						@change="update_stats_to_consider(index)" :label=stat color="primary"></v-checkbox>
+				</v-expansion-panel-text>
+			</v-expansion-panel>
+		</v-expansion-panels>
 	</div>
 	<div>
 		<h2>Constraints</h2>
@@ -328,7 +328,7 @@ watch(source_glider, (newvalue) => recalculate())
 	</div>
 	<div>
 		<div>
-			<h2 v-if="mode == 'Closest'">Source Build Stats</h2>
+			<h2 v-if="mode == 'Closest'">Source build stats</h2>
 			<v-card v-if="mode == 'Closest'">
 				<v-card-text>
 					<h3 v-html="build_to_string(source_build)"></h3>
@@ -338,7 +338,7 @@ watch(source_glider, (newvalue) => recalculate())
 			</v-card>
 		</div>
 		<br>
-		<h2>{{ (mode == "Closest") ? "Closest Builds" : "Optimized Builds" }}</h2>
+		<h2>{{ (mode == "Closest") ? "Closest builds" : "Optimized builds" }}</h2>
 		<div v-for="(build, index) in builds">
 			<v-card v-if="build_selected == index + 1">
 				<v-card-text>
@@ -355,6 +355,12 @@ watch(source_glider, (newvalue) => recalculate())
 			</v-card>
 		</div>
 		<v-pagination v-model="build_selected" :length=builds.length></v-pagination>
+	</div>
+	<div>
+		<v-radio-group @change="recalculate()" v-model="mode">
+			<v-radio label="Closest build" value="Closest" color="primary"></v-radio>
+			<v-radio label='Optimized build (coming "soon")' value="Optimized" color="primary" disabled></v-radio>
+		</v-radio-group>
 	</div>
 </template>
 
