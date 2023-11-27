@@ -266,34 +266,35 @@ watch(source_glider, (newvalue) => recalculate())
 			<v-expansion-panel>
 				<v-expansion-panel-title>Source build</v-expansion-panel-title>
 				<v-expansion-panel-text>
-					<v-select label="Character" v-model="source_character" :items=CHARACTER_LIST style="max-width:1000px;">
+					<v-autocomplete label="Character" v-model="source_character" :items=CHARACTER_LIST
+						style="max-width:1000px;">
 						<template v-slot:item="{ item, props }">
 							<v-list-item v-bind="props" :title="null">
 								<v-list-item-title class="wrap-text">{{ item.title }}</v-list-item-title>
 							</v-list-item>
 						</template>
-					</v-select>
-					<v-select label="Vehicle" v-model="source_vehicle" :items=VEHICLE_LIST style="max-width:1000px;">
+					</v-autocomplete>
+					<v-autocomplete label="Vehicle" v-model="source_vehicle" :items=VEHICLE_LIST style="max-width:1000px;">
 						<template v-slot:item="{ item, props }">
 							<v-list-item v-bind="props" :title="null">
 								<v-list-item-title class="wrap-text">{{ item.title }}</v-list-item-title>
 							</v-list-item>
 						</template>
-					</v-select>
-					<v-select label="Wheels" v-model="source_wheels" :items=WHEEL_LIST style="max-width:1000px;">
+					</v-autocomplete>
+					<v-autocomplete label="Wheels" v-model="source_wheels" :items=WHEEL_LIST style="max-width:1000px;">
 						<template v-slot:item="{ item, props }">
 							<v-list-item v-bind="props" :title="null">
 								<v-list-item-title class="wrap-text">{{ item.title }}</v-list-item-title>
 							</v-list-item>
 						</template>
-					</v-select>
-					<v-select label="Glider" v-model="source_glider" :items=GLIDER_LIST style="max-width:1000px;">
+					</v-autocomplete>
+					<v-autocomplete label="Glider" v-model="source_glider" :items=GLIDER_LIST style="max-width:1000px;">
 						<template v-slot:item="{ item, props }">
 							<v-list-item v-bind="props" :title="null">
 								<v-list-item-title class="wrap-text">{{ item.title }}</v-list-item-title>
 							</v-list-item>
 						</template>
-					</v-select>
+					</v-autocomplete>
 				</v-expansion-panel-text>
 			</v-expansion-panel>
 			<v-expansion-panel>
@@ -346,6 +347,7 @@ watch(source_glider, (newvalue) => recalculate())
 			</v-expansion-panel>
 		</v-expansion-panels>
 	</div>
+	<br>
 	<div>
 		<v-text-field @change="recalculate()" v-model="num_of_builds" type="number" label="Number of builds to show"
 			style="width:300px"></v-text-field>
