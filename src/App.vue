@@ -176,7 +176,6 @@ function calculate_closest_build() {
 			}
 		}
 	}
-	console.log(arr.length)
 
 	arr.sort((a, b) => {
 		if (a[1] < b[1]) {
@@ -261,17 +260,42 @@ watch(source_glider, (newvalue) => recalculate())
 
 
 <template>
+	<h2>Setup</h2>
 	<div v-if="mode == 'Closest'">
-		<h2>Source build</h2>
-		<v-select label="Character" v-model="source_character" :items=CHARACTER_LIST
-			style="display: inline-block; width: 25%; overflow: hidden; word-break: break-word;"></v-select>
-		<v-select label="Vehicle" v-model="source_vehicle" :items=VEHICLE_LIST
-			style="display: inline-block; width: 25%; overflow: hidden; word-break: break-word;"></v-select>
-		<v-select label="Wheels" v-model="source_wheels" :items=WHEEL_LIST
-			style="display: inline-block; width: 25%; overflow: hidden; word-break: break-word;"></v-select>
-		<v-select label="Glider" v-model="source_glider" :items=GLIDER_LIST
-			style="display: inline-block; width: 25%; overflow: hidden; word-break: break-word;"></v-select>
 		<v-expansion-panels>
+			<v-expansion-panel>
+				<v-expansion-panel-title>Source build</v-expansion-panel-title>
+				<v-expansion-panel-text>
+					<v-select label="Character" v-model="source_character" :items=CHARACTER_LIST style="max-width:1000px;">
+						<template v-slot:item="{ item, props }">
+							<v-list-item v-bind="props" :title="null">
+								<v-list-item-title class="wrap-text">{{ item.title }}</v-list-item-title>
+							</v-list-item>
+						</template>
+					</v-select>
+					<v-select label="Vehicle" v-model="source_vehicle" :items=VEHICLE_LIST style="max-width:1000px;">
+						<template v-slot:item="{ item, props }">
+							<v-list-item v-bind="props" :title="null">
+								<v-list-item-title class="wrap-text">{{ item.title }}</v-list-item-title>
+							</v-list-item>
+						</template>
+					</v-select>
+					<v-select label="Wheels" v-model="source_wheels" :items=WHEEL_LIST style="max-width:1000px;">
+						<template v-slot:item="{ item, props }">
+							<v-list-item v-bind="props" :title="null">
+								<v-list-item-title class="wrap-text">{{ item.title }}</v-list-item-title>
+							</v-list-item>
+						</template>
+					</v-select>
+					<v-select label="Glider" v-model="source_glider" :items=GLIDER_LIST style="max-width:1000px;">
+						<template v-slot:item="{ item, props }">
+							<v-list-item v-bind="props" :title="null">
+								<v-list-item-title class="wrap-text">{{ item.title }}</v-list-item-title>
+							</v-list-item>
+						</template>
+					</v-select>
+				</v-expansion-panel-text>
+			</v-expansion-panel>
 			<v-expansion-panel>
 				<v-expansion-panel-title>Stats to consider</v-expansion-panel-title>
 				<v-expansion-panel-text>
@@ -365,18 +389,9 @@ watch(source_glider, (newvalue) => recalculate())
 </template>
 
 <style scoped>
-html {
-	overflow: hidden !important;
-}
-
-.v-card {
-	display: flex !important;
-	flex-direction: column;
-}
-
-.v-card__text {
-	flex-grow: 1;
-	overflow: auto;
+.wrap-text {
+	-webkit-line-clamp: none !important;
+	white-space: normal;
 }
 </style>
 
