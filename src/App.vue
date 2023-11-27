@@ -153,7 +153,6 @@ function recalculate() {
 }
 
 function calculate_closest_build() {
-	console.log("Function call", allowed_characters.value, allowed_vehicles.value)
 	let arr = []
 	for (var i = 0; i < allowed_characters.value.length; i++) {
 		for (var j = 0; j < allowed_vehicles.value.length; j++) {
