@@ -220,7 +220,6 @@ function calc_abs_error(source, test) {
 }
 
 function stat_for_build(build, stat) {
-	CHARACTER_STATS[CHARACTER_STATS.indexOf(build[0])]
 	return CHARACTER_STATS[CHARACTER_LIST.indexOf(build[0])][stat] + VEHICLE_STATS[VEHICLE_LIST.indexOf(build[1])][stat] + WHEEL_STATS[WHEEL_LIST.indexOf(build[2])][stat] + GLIDER_STATS[GLIDER_LIST.indexOf(build[3])][stat]
 }
 
